@@ -21,20 +21,27 @@ export default function Homepage() {
 			});
 	}, []);
 
+	function showMenu() {
+		alert("Aqui vai ser uma funçao irada de menu");
+	}
 	return (
 		<Container>
 			<Header>
-				<ion-icon name="person-circle-outline"></ion-icon>
+				<div>
+					<ion-icon name="person-circle-outline"></ion-icon>
+				</div>
 				<Title>DrivenShoes Store</Title>
-				<ion-icon name="menu-outline"></ion-icon>
+				<div onClick={showMenu}>
+					<ion-icon name="menu-outline"></ion-icon>
+				</div>
 			</Header>
 
 			<TopText>
 				<p>{userName.length > 0 ? `Bem-vindo, ${userName}!` : "Bem-vindo!"}</p>
 				<h1>O que você está procurando hoje?</h1>
 			</TopText>
-
-			<ProductsContainer>
+			<ProductBox>
+				<Category>Tênis</Category>
 				<ProductsWrapper>
 					{products.map((product, index) => {
 						if (product.category === "tênis") {
@@ -42,7 +49,10 @@ export default function Homepage() {
 						}
 					})}
 				</ProductsWrapper>
+			</ProductBox>
 
+			<ProductBox>
+				<Category>Chinelos</Category>
 				<ProductsWrapper>
 					{products.map((product, index) => {
 						if (product.category === "chinelo") {
@@ -50,7 +60,7 @@ export default function Homepage() {
 						}
 					})}
 				</ProductsWrapper>
-			</ProductsContainer>
+			</ProductBox>
 		</Container>
 	);
 }
@@ -97,5 +107,19 @@ const TopText = styled.div`
 const ProductsWrapper = styled.div`
 	display: flex;
 	overflow-y: auto;
-	margin: 15px 0px;
+	margin-bottom: 15px;
+`;
+
+const ProductBox = styled.div`
+	display: flex;
+	flex-direction: column;
+	margin-top: 10px;
+`;
+
+const Category = styled.div`
+	font-size: 20px;
+	color: #0acf83;
+	border-bottom: 1px solid #0acf83;
+	border-top: 1px solid #0acf83;
+	padding: 5px;
 `;
