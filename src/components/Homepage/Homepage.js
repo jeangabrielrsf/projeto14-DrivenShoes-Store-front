@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import UserNameContext from "../../contexts/UserNameContext.js";
 import ProductLayer from "../ProductLayer/ProductLayer.js";
@@ -8,6 +9,7 @@ export default function Homepage() {
 	const { userName, setUserName } = useContext(UserNameContext);
 	const [products, setProducts] = useState([]);
 	const productsURL = "http://localhost:5000/products";
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		axios
@@ -21,8 +23,8 @@ export default function Homepage() {
 			});
 	}, []);
 
-	function showMenu() {
-		alert("Aqui vai ser uma funçao irada de menu");
+	function showCart() {
+		navigate("/carrinho");
 	}
 	return (
 		<Container>
@@ -31,8 +33,8 @@ export default function Homepage() {
 					<ion-icon name="person-circle-outline"></ion-icon>
 				</div>
 				<Title>DrivenShoes Store</Title>
-				<div onClick={showMenu}>
-					<ion-icon name="menu-outline"></ion-icon>
+				<div onClick={showCart}>
+					<ion-icon name="cart-outline"></ion-icon>
 				</div>
 			</Header>
 
