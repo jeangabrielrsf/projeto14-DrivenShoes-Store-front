@@ -44,8 +44,8 @@ export default function Homepage() {
 	}
 
 	return (
-		<Container>
-			<Header>
+		<>
+		<Header>
 				<div>
 					<ion-icon name="person-circle-outline"></ion-icon>
 				</div>
@@ -54,6 +54,9 @@ export default function Homepage() {
 					<ion-icon name="cart-outline"></ion-icon>
 				</div>
 			</Header>
+
+			<Container>
+			
 
 			<TopText>
 				<p>{userName.length > 0 ? `Bem-vindo, ${userName}!` : "Bem-vindo!"}</p>
@@ -84,26 +87,37 @@ export default function Homepage() {
 				</ProductsWrapper>
 			</ProductsContainer>
 		</Container>
+		
+		
+		
+		</>
+		
 	);
 }
 
-const Container = styled.div`
+export const Container = styled.div`
 	background-color: #f6f6f6;
 	width: 100%;
 	height: 100vh;
 	padding: 10px;
 `;
 
-const Header = styled.div`
+export const Header = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	height:100px;
+	padding: 0 10px;
+	background-color: #f6f6f6;
 	ion-icon {
 		font-size: 30px;
 		color: #0acf83;
 	}
 `;
-const Title = styled.div`
+export const Title = styled.div`
 	color: black;
 	font-weight: 700;
 	font-size: 20px;
