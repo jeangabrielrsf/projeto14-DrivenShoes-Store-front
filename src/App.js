@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import CartPage from "./components/CartPage/CartPage.js";
 import Homepage from "./components/Homepage/Homepage.js";
 import UserNameContext from "./contexts/UserNameContext.js";
 import CartPage from "./components/CartPage/CartPage.js";

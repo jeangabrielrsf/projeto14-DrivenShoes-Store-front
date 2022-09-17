@@ -10,6 +10,7 @@ export default function Homepage() {
 	const [products, setProducts] = useState([]);
 	const productsURL = "http://localhost:5000/products";
 	const navigate = useNavigate();
+	const categories = [];
 
 	useEffect(() => {
 		axios
@@ -17,15 +18,31 @@ export default function Homepage() {
 			.then((result) => {
 				console.log(result.data);
 				setProducts(result.data);
+				getItensCategories(result.data);
+
+				console.log(categories);
 			})
 			.catch((error) => {
-				console.log(error.response);
+				console.log(error);
 			});
 	}, []);
 
-	function showCart() {
+	function getItensCategories(itens) {
+		itens.forEach((item) => {
+			if (categories.length === 0) {
+				categories.push(item.category);
+			}
+
+			if (!categories.find((value) => value === item.category)) {
+				categories.push(item.category);
+			}
+		});
+	}
+
+	function toCart() {
 		navigate("/carrinho");
 	}
+
 	return (
 		<Container>
 			<Header>
@@ -33,7 +50,7 @@ export default function Homepage() {
 					<ion-icon name="person-circle-outline"></ion-icon>
 				</div>
 				<Title>DrivenShoes Store</Title>
-				<div onClick={showCart}>
+				<div onClick={toCart}>
 					<ion-icon name="cart-outline"></ion-icon>
 				</div>
 			</Header>
@@ -42,8 +59,14 @@ export default function Homepage() {
 				<p>{userName.length > 0 ? `Bem-vindo, ${userName}!` : "Bem-vindo!"}</p>
 				<h1>O que você está procurando hoje?</h1>
 			</TopText>
-			<ProductBox>
-				<Category>Tênis</Category>
+
+			<div>
+				{categories.forEach((value) => {
+					if (value === "tênis") return <h1>oi</h1>;
+				})}
+			</div>
+
+			<ProductsContainer>
 				<ProductsWrapper>
 					{products.map((product, index) => {
 						if (product.category === "tênis") {
@@ -51,10 +74,7 @@ export default function Homepage() {
 						}
 					})}
 				</ProductsWrapper>
-			</ProductBox>
 
-			<ProductBox>
-				<Category>Chinelos</Category>
 				<ProductsWrapper>
 					{products.map((product, index) => {
 						if (product.category === "chinelo") {
@@ -62,7 +82,7 @@ export default function Homepage() {
 						}
 					})}
 				</ProductsWrapper>
-			</ProductBox>
+			</ProductsContainer>
 		</Container>
 	);
 }
@@ -125,3 +145,5 @@ const Category = styled.div`
 	border-top: 1px solid #0acf83;
 	padding: 5px;
 `;
+
+const ProductsContainer = styled.div``;
