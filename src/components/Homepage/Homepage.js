@@ -10,6 +10,7 @@ export default function Homepage() {
 	const [products, setProducts] = useState([]);
 	const productsURL = "http://localhost:5000/products";
 	const navigate = useNavigate();
+	const categories = [];
 
 	useEffect(() => {
 		axios
@@ -17,11 +18,26 @@ export default function Homepage() {
 			.then((result) => {
 				console.log(result.data);
 				setProducts(result.data);
+				getItensCategories(result.data);
+
+				console.log(categories);
 			})
 			.catch((error) => {
-				console.log(error.response);
+				console.log(error);
 			});
 	}, []);
+
+	function getItensCategories(itens) {
+		itens.forEach((item) => {
+			if (categories.length === 0) {
+				categories.push(item.category);
+			}
+
+			if (!categories.find((value) => value === item.category)) {
+				categories.push(item.category);
+			}
+		});
+	}
 
 	function toCart() {
 		navigate("/carrinho");
@@ -41,6 +57,12 @@ export default function Homepage() {
 				<p>{userName.length > 0 ? `Bem-vindo, ${userName}!` : "Bem-vindo!"}</p>
 				<h1>O que você está procurando hoje?</h1>
 			</TopText>
+
+			<div>
+				{categories.forEach((value) => {
+					if (value === "tênis") return <h1>oi</h1>;
+				})}
+			</div>
 
 			<ProductsContainer>
 				<ProductsWrapper>
@@ -107,3 +129,5 @@ const ProductsWrapper = styled.div`
 	overflow-y: auto;
 	margin: 15px 0px;
 `;
+
+const ProductsContainer = styled.div``;
