@@ -46,7 +46,9 @@ export default function Homepage() {
 	return (
 		<Container>
 			<Header>
-				<ion-icon name="person-circle-outline"></ion-icon>
+				<div>
+					<ion-icon name="person-circle-outline"></ion-icon>
+				</div>
 				<Title>DrivenShoes Store</Title>
 				<div onClick={toCart}>
 					<ion-icon name="cart-outline"></ion-icon>
@@ -127,7 +129,21 @@ const TopText = styled.div`
 const ProductsWrapper = styled.div`
 	display: flex;
 	overflow-y: auto;
-	margin: 15px 0px;
+	margin-bottom: 15px;
+`;
+
+const ProductBox = styled.div`
+	display: flex;
+	flex-direction: column;
+	margin-top: 10px;
+`;
+
+const Category = styled.div`
+	font-size: 20px;
+	color: #0acf83;
+	border-bottom: 1px solid #0acf83;
+	border-top: 1px solid #0acf83;
+	padding: 5px;
 `;
 
 const ProductsContainer = styled.div``;
