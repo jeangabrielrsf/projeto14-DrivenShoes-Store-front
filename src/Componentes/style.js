@@ -5,9 +5,11 @@ import styled from "styled-components";
 const Css = {
   Tela: styled.div`
     box-sizing: border-box;
-    background: linear-gradient(45deg,#22577A,#38A3A5, #57CC99,#80ED99 );
-    background-size: 200% 200%;
-    text-decoration: none !important;
+    background-image: url(https://images.pexels.com/photos/1437916/pexels-photo-1437916.jpeg?cs=srgb&dl=pexels-abhishek-gaurav-1437916.jpg&fm=jpg.jpg);
+    //background: linear-gradient(45deg,#22577A,#38A3A5, #57CC99,#80ED99 );
+    //background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     padding: 10px;
     height: 100vh;
     -moz-box-align: center;
@@ -15,18 +17,18 @@ const Css = {
     justify-content: center;
     animation: colors 5s ease infinite;
     @keyframes colors {
-      0%{
+      0% {
         background-position: 0% 50%;
       }
-      50%{
+      50% {
         background-position: 100% 50%;
       }
-      100%{
+      100% {
         background-position: 0% 50%;
       }
     }
-    span{
-      text-decoration: none ;
+    span {
+      text-decoration: none;
       color: white;
     }
 
@@ -37,13 +39,16 @@ const Css = {
       margin-bottom: 10px;
     }
     h1 {
-      font-size: 50px;
-      font-weight: 400;
-      //margin-bottom: 30px;
-      color: #ffffff;
+      font-size: 70px;
+      font-weight: 700;
+      margin-bottom: 50px;
+      color: #477082;
       font-family: "Oswald", sans-serif;
       padding: 30px;
       text-decoration: none !important;
+      box-shadow: 3px 3px  #00000060;
+      background-color: lightgray;
+      opacity: 0.8;
     }
     p {
       font-family: "Roboto", sans-serif;
@@ -63,14 +68,16 @@ const Css = {
   Input: styled.input`
     border-radius: 5px;
     box-sizing: border-box;
+    border-bottom: 2px solid #9a6243;
     border: none;
     outline: none;
     height: 50px;
     width: 300px;
-    padding: 10px;
+    padding: 20px;
     margin-bottom: 1rem;
     cursor: pointer;
-    transition: 500ms ease-in-out;
+    transition: all .3s ease-out;
+    
     ::placeholder {
       font-size: 16px;
       font-weight: 400;
@@ -82,6 +89,7 @@ const Css = {
     }
     :focus {
       border: 1px solid #154d2e;
+      border-bottom: 2px solid black;
       ::placeholder {
         color: #808080;
       }
@@ -101,13 +109,14 @@ const Css = {
     //border-radius: 5px;
     box-sizing: border-box;
     border: 1px solid white;
+    background-color: transparent;
     border-radius: 5px;
     outline: none;
     height: 50px;
     width: 300px;
     padding: 10px;
     margin-bottom: 1rem;
-    background: #0acf83;
+    background: #477082;
     color: white;
     font-family: "Roboto", sans-serif;
     font-size: 18px;
@@ -117,6 +126,9 @@ const Css = {
       top: -2px;
       box-shadow: 0 4px 4px #666;
       transition: all 400ms ease;
+      background-color: #59503d;
+      color: #fff;
+
     }
   `,
   BoxConfirmation: styled.div`
@@ -158,7 +170,7 @@ margin-right:1rem; */
     height: 100vh;
     -moz-box-align: center;
     -moz-box-pack: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     justify-content: center;
   `,
   CheckOut: styled.div`
@@ -208,7 +220,7 @@ margin-right:1rem; */
     padding: 20px;
     display: flex;
     flex-direction: row;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     img {
       width: 100px;
       height: 60px;
@@ -223,13 +235,13 @@ margin-right:1rem; */
     margin: 20px;
     border: #eef1f4;
     background-color: #eef1f4;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     cursor: pointer;
     ::placeholder {
       font-size: 18px;
       font-weight: 300;
     }
-    img{
+    img {
       width: 10px;
       height: 10px;
     }
@@ -242,36 +254,36 @@ margin-right:1rem; */
     border: none;
     background-color: #eef1f4;
     cursor: pointer;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
   `,
   Less: styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
   `,
   BeforeComplete: styled.p`
     font-size: 18px;
     font-weight: 700;
     text-align: center;
     margin-top: 20px;
-    color: #3A3C3F;
-    font-family: 'Roboto', sans-serif;
+    color: #3a3c3f;
+    font-family: "Roboto", sans-serif;
   `,
   BoxComplete: styled.div`
-  display: flex;
-  justify-content: center;
-  font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    font-family: "Roboto", sans-serif;
   `,
   OtherLine: styled.div`
-  display:flex;
-  justify-content: space-between;
-  font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    font-family: "Roboto", sans-serif;
   `,
-  Column:styled.div`
-  display: flex;
-  flex-direction: column;
-  font-family: 'Roboto', sans-serif;
+  Column: styled.div`
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto", sans-serif;
   `,
 
   CompletePayment: styled.button`
@@ -286,7 +298,7 @@ margin-right:1rem; */
     margin-top: 20px;
     cursor: pointer;
     margin-bottom: 50px;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
   `,
 };
 

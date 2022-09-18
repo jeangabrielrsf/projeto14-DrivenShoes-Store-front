@@ -43,14 +43,14 @@ export default function Login() {
         >
           <Css.Caixa>
             <h1>DRIVEN SHOES </h1>
-            <ion-icon name="person-circle"></ion-icon>
+            
             <Css.Input
               placeholder="Email"
               required
               onChange={(e) => setEmail(e.target.value)}
             ></Css.Input>
 
-            <Css.Input
+            <Css.Input type='password'
               placeholder="Password"
               required
               onChange={(e) => setSenha(e.target.value)}

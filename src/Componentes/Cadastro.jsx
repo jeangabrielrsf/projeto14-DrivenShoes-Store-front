@@ -49,11 +49,10 @@ export default function Cadastro() {
           e.preventDefault() }}>
           <Css.Caixa>
             <h1>DRIVEN SHOES </h1>
-            <ion-icon name="person-circle"></ion-icon>
             <Css.Input placeholder="Nome" required onChange={(e)=>{setNome(e.target.value)}}></Css.Input>
             <Css.Input placeholder="Email" required onChange={(e)=>{setEmail(e.target.value)}}></Css.Input>
-            <Css.Input placeholder="Password" required onChange={(e)=>{setSenha(e.target.value)}}></Css.Input>
-            <Css.Input placeholder="Repeat Password" required onChange={(e)=>{setSenha1(e.target.value)}} ></Css.Input>
+            <Css.Input type='password' placeholder="Password" required onChange={(e)=>{setSenha(e.target.value)}}></Css.Input>
+            <Css.Input type='password'  placeholder="Repeat Password" required onChange={(e)=>{setSenha1(e.target.value)}} ></Css.Input>
             <Css.Entrar type="submit"> Sign Up </Css.Entrar>
 
             <Css.BoxConfirmation>
