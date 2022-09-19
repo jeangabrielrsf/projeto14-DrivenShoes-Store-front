@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CartPage from "./components/CartPage/CartPage.js";
 import Homepage from "./components/Homepage/Homepage.js";
 import UserNameContext from "./contexts/UserNameContext.js";
+import ProductPage from "./components/ProductPage/ProductPage.js";
 import "./Componentes/GlobalStyles.css";
 import Login from "./Componentes/Login.jsx";
 import Cadastro from "./Componentes/Cadastro.jsx";
@@ -18,6 +19,7 @@ export default function App() {
 					<Routes>
 						<Route path="/home" element={<Homepage />} />
 						<Route path="/carrinho" element={<CartPage />} />
+						<Route path="/:idProduto" element={<ProductPage />} />
 						<Route path="/payment" element={<Payment />} />
 						<Route path="/" element={<Login />} />
 						<Route path="/cadastro" element={<Cadastro />} />
