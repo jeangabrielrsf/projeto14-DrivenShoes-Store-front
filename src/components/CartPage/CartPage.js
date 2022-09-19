@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import UserCartContext from "../../contexts/UserCartContext";
 
 export default function CartPage() {
 	const navigate = useNavigate();
 	const arrayTeste = [];
+	const { cart } = useContext(UserCartContext);
 
 	function goToCheckout() {}
 
@@ -20,10 +23,14 @@ export default function CartPage() {
 			</Top>
 
 			<Wrapper>
-				{arrayTeste.length === 0 ? (
+				{cart.length === 0 ? (
 					<p>Você ainda não colocou nada no carrinho :c</p>
 				) : (
-					""
+					<CartWrapper>
+						{cart.map((item) => {
+							return <CartItem item={item} />;
+						})}
+					</CartWrapper>
 				)}
 			</Wrapper>
 
@@ -83,4 +90,10 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+`;
+
+const CartWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	margin-top: 10px;
 `;

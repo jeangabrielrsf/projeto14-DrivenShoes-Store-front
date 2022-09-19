@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
+import UserCartContext from "../../contexts/UserCartContext.js";
 import UserNameContext from "../../contexts/UserNameContext.js";
 import { Header, Title } from "../Homepage/Homepage.js";
 import SizeNumber from "./SizeNumber.js";
@@ -13,6 +14,7 @@ function ProductPage() {
 	const productURL = `http://localhost:5000/products/${idProduto}`;
 	const navigate = useNavigate();
 	const [counter, setCounter] = useState(0);
+	const { setCart } = useContext(UserCartContext);
 
 	function toCart() {
 		navigate("/carrinho");
@@ -55,12 +57,16 @@ function ProductPage() {
 					id={index}
 					number={item}
 					setSelectedSize={setSelectedSize}
-                    selectedSize={selectedSize}
+					selectedSize={selectedSize}
 				/>
 			));
 		}
 	}
 
+	function addProduct() {
+		console.log("cliquei");
+		setCart({ ...product, counter });
+	}
 	return (
 		<>
 			<Header>
@@ -73,14 +79,11 @@ function ProductPage() {
 				</div>
 			</Header>
 			<ProductWrapper>
-				<img
-					src={image}
-					alt={name}
-				/>
+				<img src={image} alt={name} />
 
 				<ProductInfo>
 					<h1>{name}</h1>
-					<h2>R$ {price}</h2>
+					<h2>R$ {(price / 100).toFixed(2).toString().replace(".", ",")}</h2>
 					<ProductQuantity>
 						<Counter onClick={decreaseCounter}>-</Counter>
 						{counter}
@@ -97,7 +100,7 @@ function ProductPage() {
 				</ProductInfo>
 			</ProductWrapper>
 			<Footer>
-				<AddToCart>ADICIONE AO CARRINHO</AddToCart>
+				<AddToCart onClick={addProduct}>ADICIONE AO CARRINHO</AddToCart>
 			</Footer>
 		</>
 	);
