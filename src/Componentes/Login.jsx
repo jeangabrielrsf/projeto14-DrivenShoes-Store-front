@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import UserNameContext from "../contexts/UserNameContext";
 
 export default function Login() {
-	const URL = "http://127.0.0.1:5000/";
+	const URL = "https://driven-shoes.herokuapp.com/";
 	const Navegar = useNavigate();
 	const [email, setEmail] = React.useState();
 	const [senha, setSenha] = React.useState();

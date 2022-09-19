@@ -8,7 +8,7 @@ import ProductLayer from "../ProductLayer/ProductLayer.js";
 export default function Homepage() {
 	const { userName, setUserName } = useContext(UserNameContext);
 	const [products, setProducts] = useState([]);
-	const productsURL = "http://localhost:5000/products";
+	const productsURL = "https://driven-shoes.herokuapp.com/products";
 	const navigate = useNavigate();
 	const categories = [];
 

@@ -10,7 +10,7 @@ import SizeNumber from "./SizeNumber.js";
 function ProductPage() {
 	const { idProduto } = useParams();
 	const { userName } = useContext(UserNameContext);
-	const productURL = `http://localhost:5000/products/${idProduto}`;
+	const productURL = `https://driven-shoes.herokuapp.com/products/${idProduto}`;
 	const navigate = useNavigate();
 	const [counter, setCounter] = useState(0);
 	const { cart, setCart } = useContext(UserCartContext);
