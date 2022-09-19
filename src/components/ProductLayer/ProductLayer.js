@@ -23,7 +23,7 @@ export default function ProductLayer({ product }) {
 
 const Wrapper = styled.div`
 	border-radius: 10px;
-	background-color: white;
+	background-color: #f6f6f6;
 	margin: 5px;
 	width: 100%;
 	display: flex;

@@ -1,19 +1,23 @@
 import Css from "./style";
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import UserNameContext from "../contexts/UserNameContext";
 
 export default function Login() {
 	const URL = "http://127.0.0.1:5000/";
 	const Navegar = useNavigate();
 	const [email, setEmail] = React.useState();
 	const [senha, setSenha] = React.useState();
+	const { setUserName } = useContext(UserNameContext);
 
 	function Logar() {
 		if (email && senha) {
 			const variavel = axios
 				.post(URL, { email: email, password: senha })
 				.then((res) => {
+					console.log(res);
+					setUserName(res.data.name);
 					sessionStorage.tokenete = res.data.token;
 					sessionStorage.nome = res.data.name;
 					sessionStorage.setItem("user", email);
@@ -23,6 +27,7 @@ export default function Login() {
 				})
 
 				.catch((error) => console.log(error));
+
 			console.log(variavel, email, senha);
 		} else {
 			console.log(email, senha);

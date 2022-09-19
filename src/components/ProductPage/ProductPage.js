@@ -12,21 +12,21 @@ function ProductPage() {
 	const { userName } = useContext(UserNameContext);
 	const productURL = `http://localhost:5000/products/${idProduto}`;
 	const navigate = useNavigate();
-	const [quantity, setQuantity] = useState(0);
+	const [counter, setCounter] = useState(0);
 
 	function toCart() {
 		navigate("/carrinho");
 	}
 
-	function increaseQuantity() {
-		if (quantity >= 0) {
-			setQuantity(quantity + 1);
+	function increaseCounter() {
+		if (counter >= 0 && counter < quantity) {
+			setCounter(counter + 1);
 		}
 	}
 
-	function decreaseQuantity() {
-		if (quantity > 0) {
-			setQuantity(quantity - 1);
+	function decreaseCounter() {
+		if (counter > 0) {
+			setCounter(counter - 1);
 		}
 	}
 
@@ -43,19 +43,19 @@ function ProductPage() {
 			setProduct(data);
 		});
 	}, []);
-	const { name, image, price, ratio, stock, sizes, colors } = product;
+	const { name, image, price, ratio, quantity, size, color } = product;
 
 	function buildSizes() {
 		if (product.length === 0) {
 			return <h4>Carregando...</h4>;
 		} else {
-			return sizes.map((item) => (
+			return size.map((item, index) => (
 				<SizeNumber
-					key={item.id}
-					id={item.id}
-					number={item.number}
-					isAvailable={item.isAvailable}
+					key={item.index}
+					id={index}
+					number={item}
 					setSelectedSize={setSelectedSize}
+                    selectedSize={selectedSize}
 				/>
 			));
 		}
@@ -74,26 +74,26 @@ function ProductPage() {
 			</Header>
 			<ProductWrapper>
 				<img
-					src="https://40378.cdn.simplo7.net/static/40378/sku/masculino-60182884d354e-tenis-tenis-nike-air-jordan-3-retro-1619812208892.jpg"
-					alt="Air Jordan"
+					src={image}
+					alt={name}
 				/>
 
 				<ProductInfo>
-					<h1>Air Jordan 3 Retrô</h1>
-					<h2>R$ 400,00</h2>
+					<h1>{name}</h1>
+					<h2>R$ {price}</h2>
 					<ProductQuantity>
-						<Counter onClick={decreaseQuantity}>-</Counter>
-						{quantity}
-						<Counter onClick={increaseQuantity}>+</Counter>
+						<Counter onClick={decreaseCounter}>-</Counter>
+						{counter}
+						<Counter onClick={increaseCounter}>+</Counter>
 					</ProductQuantity>
 					<ConsumersInfos>
 						<ProductRate>
 							<ion-icon name="star"></ion-icon>
-							<h3>4,2</h3>
+							<h3>{ratio}</h3>
 						</ProductRate>
 						<ProductReviews> 1057 Reviews</ProductReviews>
 					</ConsumersInfos>
-					<SelectionWrapper>{/*  {buildSizes()} */}</SelectionWrapper>
+					<SelectionWrapper> {buildSizes()}</SelectionWrapper>
 				</ProductInfo>
 			</ProductWrapper>
 			<Footer>

@@ -92,10 +92,11 @@ export default function Homepage() {
 }
 
 export const Container = styled.div`
-	background-color: #f6f6f6;
+	background-color: #fff;
 	width: 100%;
 	height: 100vh;
 	padding: 10px;
+	padding-top: 80px;
 `;
 
 export const Header = styled.div`
@@ -104,10 +105,11 @@ export const Header = styled.div`
 	align-items: center;
 	position: fixed;
 	top: 0px;
+	left: 0px;
 	width: 100%;
-	height: 100px;
 	padding: 0 10px;
 	background-color: #f6f6f6;
+	border-radius: 0px 0px 30px 30px;
 	ion-icon {
 		font-size: 30px;
 		color: #0acf83;
