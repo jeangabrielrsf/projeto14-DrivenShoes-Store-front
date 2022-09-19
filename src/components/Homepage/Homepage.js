@@ -45,7 +45,7 @@ export default function Homepage() {
 
 	return (
 		<>
-		<Header>
+			<Header>
 				<div>
 					<ion-icon name="person-circle-outline"></ion-icon>
 				</div>
@@ -56,42 +56,38 @@ export default function Homepage() {
 			</Header>
 
 			<Container>
-			
+				<TopText>
+					<p>
+						{userName.length > 0 ? `Bem-vindo, ${userName}!` : "Bem-vindo!"}
+					</p>
+					<h1>O que você está procurando hoje?</h1>
+				</TopText>
 
-			<TopText>
-				<p>{userName.length > 0 ? `Bem-vindo, ${userName}!` : "Bem-vindo!"}</p>
-				<h1>O que você está procurando hoje?</h1>
-			</TopText>
-
-			<div>
-				{categories.forEach((value) => {
-					if (value === "tênis") return <h1>oi</h1>;
-				})}
-			</div>
-
-			<ProductsContainer>
-				<ProductsWrapper>
-					{products.map((product, index) => {
-						if (product.category === "tênis") {
-							return <ProductLayer key={index} product={product} />;
-						}
+				<div>
+					{categories.forEach((value) => {
+						if (value === "tênis") return <h1>oi</h1>;
 					})}
-				</ProductsWrapper>
+				</div>
 
-				<ProductsWrapper>
-					{products.map((product, index) => {
-						if (product.category === "chinelo") {
-							return <ProductLayer key={index} product={product} />;
-						}
-					})}
-				</ProductsWrapper>
-			</ProductsContainer>
-		</Container>
-		
-		
-		
+				<ProductsContainer>
+					<ProductsWrapper>
+						{products.map((product, index) => {
+							if (product.category === "tênis") {
+								return <ProductLayer key={index} product={product} />;
+							}
+						})}
+					</ProductsWrapper>
+
+					<ProductsWrapper>
+						{products.map((product, index) => {
+							if (product.category === "chinelo") {
+								return <ProductLayer key={index} product={product} />;
+							}
+						})}
+					</ProductsWrapper>
+				</ProductsContainer>
+			</Container>
 		</>
-		
 	);
 }
 
@@ -109,7 +105,7 @@ export const Header = styled.div`
 	position: fixed;
 	top: 0px;
 	width: 100%;
-	height:100px;
+	height: 100px;
 	padding: 0 10px;
 	background-color: #f6f6f6;
 	ion-icon {

@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 export default function ProductLayer({ product }) {
+	const navigate = useNavigate();
 	return (
-		<Wrapper>
+		<Wrapper onClick={() => navigate(`/${product._id}`)}>
 			<img src={product.image} alt="" />
 
 			<h3>{product.name}</h3>
