@@ -10,7 +10,7 @@ export default function CartPage() {
 	return (
 		<Container>
 			<Top>
-				<div onClick={() => navigate("/")}>
+				<div onClick={() => navigate("/home")}>
 					<ion-icon name="chevron-back-outline"></ion-icon>
 				</div>
 				<h2>Carrinho</h2>
@@ -28,7 +28,7 @@ export default function CartPage() {
 			</Wrapper>
 
 			<Footer>
-				<button>
+				<button onClick={() => navigate("/payment")}>
 					<div>Prosseguir para Pagamento</div>
 				</button>
 			</Footer>
