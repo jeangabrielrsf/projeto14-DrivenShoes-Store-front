@@ -26,7 +26,10 @@ export default function Login() {
 					console.log("user", email, senha);
 				})
 
-				.catch((error) => console.log(error));
+				.catch((error) => {
+					console.log(error);
+					alert("erro no axios - front");
+				});
 
 			console.log(variavel, email, senha);
 		} else {
