@@ -28,7 +28,7 @@ export default function CartPage() {
 
 			<Wrapper>
 				{cart.length === 0 ? (
-					<p>Você ainda não colocou nada no carrinho :c</p>
+					<p>Você ainda não colocou nada no carrinho &#128557;</p>
 				) : (
 					<CartWrapper>
 						{cart.map((item) => {

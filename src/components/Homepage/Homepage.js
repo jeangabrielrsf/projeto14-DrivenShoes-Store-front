@@ -63,13 +63,14 @@ export default function Homepage() {
 					<h1>O que você está procurando hoje?</h1>
 				</TopText>
 
-				<div>
-					{categories.forEach((value) => {
-						if (value === "tênis") return <h1>oi</h1>;
-					})}
-				</div>
-
 				<ProductsContainer>
+					{categories.map((category) => {
+						return (
+							<>
+								<Category>{category}</Category>
+							</>
+						);
+					})}
 					<ProductsWrapper>
 						{products.map((product, index) => {
 							if (product.category === "tênis") {
@@ -144,18 +145,17 @@ const ProductsWrapper = styled.div`
 	margin-bottom: 15px;
 `;
 
-const ProductBox = styled.div`
-	display: flex;
-	flex-direction: column;
-	margin-top: 10px;
-`;
-
 const Category = styled.div`
 	font-size: 20px;
 	color: #0acf83;
 	border-bottom: 1px solid #0acf83;
 	border-top: 1px solid #0acf83;
 	padding: 5px;
+	z-index: 10;
 `;
 
-const ProductsContainer = styled.div``;
+const ProductsContainer = styled.div`
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+`;
