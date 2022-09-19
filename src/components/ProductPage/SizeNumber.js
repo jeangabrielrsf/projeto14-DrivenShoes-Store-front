@@ -8,31 +8,32 @@ import styled from "styled-components";
 const borderSelecionado = "#1AAE9E";
 const colorDisponivel = "#d5dee6";
 const borderDisponivel = "#7B8B99";
-const borderIndisponivel = "#99220f";
 
 
 
-function SizeNumber ({id, isAvailable, number, setSelectedSize}){
+function SizeNumber ({id, number, setSelectedSize, selectedSize}){
     const [selecionar, setSelecionar] = useState(false);
+    console.log(selectedSize);
+
+   
+
+    return (
+        <SizeModel key={id} number={number} color={colorDisponivel} border={selecionar? borderSelecionado:borderDisponivel} onClick={() => {
+            setSelectedSize(number)
+            setSelecionar(!selecionar)
+            
+        }} >
+            <h3>{number}</h3>
+        </SizeModel>
+
+    )
+
     
 
-    if (isAvailable === true) {
-        return (
-            <SizeModel id={id} color={colorDisponivel} border={selecionar ? borderSelecionado : borderDisponivel} onClick={() => {
-                setSelectedSize(id)
-                setSelecionar(!selecionar)
-            }} >
-                <h3>{number}</h3>
-            </SizeModel>
+    
+    
 
-        )
-    } else {
-        return (
-            <SizeModel color={colorDisponivel} border={borderIndisponivel} onClick={() => alert("Este tamanho não está disponível")}>
-                <h3>{number}</h3>
-            </SizeModel>
-        )
-    }
+   
 }
 
 
