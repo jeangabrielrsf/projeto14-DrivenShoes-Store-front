@@ -2,13 +2,17 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import UserCartContext from "../../contexts/UserCartContext";
+import CartItem from "../CartItem/CartItem";
+import { Header } from "../Homepage/Homepage";
 
 export default function CartPage() {
 	const navigate = useNavigate();
-	const arrayTeste = [];
-	const { cart } = useContext(UserCartContext);
+	const { cart, setCart } = useContext(UserCartContext);
+	console.log(cart);
 
-	function goToCheckout() {}
+	function deleteCart() {
+		setCart([]);
+	}
 
 	return (
 		<Container>
@@ -18,7 +22,7 @@ export default function CartPage() {
 				</div>
 				<h2>Carrinho</h2>
 				<div>
-					<ion-icon name="trash-outline"></ion-icon>
+					<ion-icon onClick={deleteCart} name="trash-outline"></ion-icon>
 				</div>
 			</Top>
 
@@ -48,13 +52,26 @@ const Container = styled.div`
 	width: 100%;
 	height: 100vh;
 	padding: 10px;
+	padding-top: 80px;
 `;
 const Top = styled.div`
 	width: 100%;
+	font-size: 20px;
 	display: flex;
+	height: 60px;
 	justify-content: space-between;
 	align-items: center;
-	font-size: 20px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #f6f6f6;
+	border-radius: 0px 0px 30px 30px;
+	padding: 0px 10px;
+
+	ion-icon {
+		color: #0acf83;
+		font-size: 30px;
+	}
 
 	h2 {
 		font-weight: 700;
@@ -81,12 +98,11 @@ const Footer = styled.div`
 		height: 50px;
 		font-weight: 700;
 		font-size: 14px;
+		border-color: #f6f6f6;
 	}
 `;
 
 const Wrapper = styled.div`
-	margin: 20px 0px;
-	border: 1px solid red;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -95,5 +111,5 @@ const Wrapper = styled.div`
 const CartWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	margin-top: 10px;
+	width: 100%;
 `;

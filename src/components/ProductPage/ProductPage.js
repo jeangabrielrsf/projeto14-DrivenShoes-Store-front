@@ -9,12 +9,11 @@ import SizeNumber from "./SizeNumber.js";
 
 function ProductPage() {
 	const { idProduto } = useParams();
-	console.log(idProduto);
 	const { userName } = useContext(UserNameContext);
 	const productURL = `http://localhost:5000/products/${idProduto}`;
 	const navigate = useNavigate();
 	const [counter, setCounter] = useState(0);
-	const { setCart } = useContext(UserCartContext);
+	const { cart, setCart } = useContext(UserCartContext);
 
 	function toCart() {
 		navigate("/carrinho");
@@ -32,18 +31,21 @@ function ProductPage() {
 		}
 	}
 
-	const [product, setProduct] = useState([]);
+	const [product, setProduct] = useState({});
 	const [selectedSize, setSelectedSize] = useState("");
 	const [selectedColor, setSelectedColor] = useState("");
 
 	useEffect(() => {
 		const promise = axios.get(productURL);
-
-		promise.then((response) => {
-			const { data } = response;
-			console.log(data);
-			setProduct(data);
-		});
+		promise
+			.then((response) => {
+				const { data } = response;
+				console.log(data);
+				setProduct(data);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	}, []);
 	const { name, image, price, ratio, quantity, size, color } = product;
 
@@ -65,7 +67,13 @@ function ProductPage() {
 
 	function addProduct() {
 		console.log("cliquei");
-		setCart({ ...product, counter });
+		if (counter === 0) {
+			alert("Selecione a quantidade para adicionar ao carrinho!");
+			return;
+		}
+		const productObj = { ...product, counter };
+		setCart([...cart, productObj]);
+		alert("Produto adicionado com sucesso!");
 	}
 	return (
 		<>
@@ -96,7 +104,7 @@ function ProductPage() {
 						</ProductRate>
 						<ProductReviews> 1057 Reviews</ProductReviews>
 					</ConsumersInfos>
-					<SelectionWrapper> {buildSizes()}</SelectionWrapper>
+					{/* <SelectionWrapper> {buildSizes()}</SelectionWrapper> */}
 				</ProductInfo>
 			</ProductWrapper>
 			<Footer>
