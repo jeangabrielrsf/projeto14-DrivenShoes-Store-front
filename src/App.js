@@ -4,13 +4,13 @@ import CartPage from "./components/CartPage/CartPage.js";
 import Homepage from "./components/Homepage/Homepage.js";
 import UserNameContext from "./contexts/UserNameContext.js";
 import ProductPage from "./components/ProductPage/ProductPage.js";
-import "./Componentes/GlobalStyles.css";
+//import "./Componentes/GlobalStyles.css";
 import Login from "./Componentes/Login.jsx";
 import Cadastro from "./Componentes/Cadastro.jsx";
 import Payment from "./Componentes/Payment";
 
 export default function App() {
-	const [userName, setUserName] = useState("Dev Jean");
+	const [userName, setUserName] = useState("");
 
 	return (
 		<>
