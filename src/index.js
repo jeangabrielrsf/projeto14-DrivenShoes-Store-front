@@ -1,4 +1,5 @@
 import ReactDOM from "react-dom";
+
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./Componentes/GlobalStyles.css";
@@ -22,4 +23,7 @@ function App() {
   );
 }
 
+import App from "./App";
+import "./styles/reset.css";
+import "./styles/style.css";
 ReactDOM.render(<App />, document.querySelector(".root"));
