@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import Categories from "../../Categories/Categories.js";
 import UserNameContext from "../../contexts/UserNameContext.js";
 import ProductLayer from "../ProductLayer/ProductLayer.js";
 
@@ -18,7 +19,7 @@ export default function Homepage() {
 			.then((result) => {
 				console.log(result.data);
 				setProducts(result.data);
-				getItensCategories(result.data);
+				//getItensCategories(result.data);
 
 				console.log(categories);
 			})
@@ -64,15 +65,29 @@ export default function Homepage() {
 				</TopText>
 
 				<ProductsContainer>
-					{categories.map((category) => {
-						return (
-							<>
-								<Category>{category}</Category>
-							</>
-						);
+					{products.map((product, index) => {
+						let itemCategory = product.category;
+						console.log("testei");
+						if (!categories.find((value) => value === product.category)) {
+							categories.push(product.category);
+							return (
+								<>
+									<Categories key={index} category={product.category} />
+									<ProductsWrapper>
+										{products.map((product, index) => {
+											console.log("map do tênis");
+											if (product.category === itemCategory) {
+												return <ProductLayer key={index} product={product} />;
+											}
+										})}
+									</ProductsWrapper>
+								</>
+							);
+						}
 					})}
-					<ProductsWrapper>
+					{/* <ProductsWrapper>
 						{products.map((product, index) => {
+							console.log("map do tênis");
 							if (product.category === "tênis") {
 								return <ProductLayer key={index} product={product} />;
 							}
@@ -81,11 +96,12 @@ export default function Homepage() {
 
 					<ProductsWrapper>
 						{products.map((product, index) => {
+							console.log("map do chinelo");
 							if (product.category === "chinelo") {
 								return <ProductLayer key={index} product={product} />;
 							}
 						})}
-					</ProductsWrapper>
+					</ProductsWrapper> */}
 				</ProductsContainer>
 			</Container>
 		</>
@@ -143,15 +159,6 @@ const ProductsWrapper = styled.div`
 	display: flex;
 	overflow-y: auto;
 	margin-bottom: 15px;
-`;
-
-const Category = styled.div`
-	font-size: 20px;
-	color: #0acf83;
-	border-bottom: 1px solid #0acf83;
-	border-top: 1px solid #0acf83;
-	padding: 5px;
-	z-index: 10;
 `;
 
 const ProductsContainer = styled.div`
