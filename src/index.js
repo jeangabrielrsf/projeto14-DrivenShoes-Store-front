@@ -16,6 +16,7 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/payment" element={ <Payment />}  /> 
+        
       </Routes>
     </BrowserRouter>
   );
