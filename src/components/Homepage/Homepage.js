@@ -131,6 +131,7 @@ export const Header = styled.div`
 		font-size: 30px;
 		color: #0acf83;
 	}
+	z-index: 10;
 `;
 export const Title = styled.div`
 	color: black;
