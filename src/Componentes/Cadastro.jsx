@@ -80,7 +80,7 @@ export default function Cadastro() {
 								setSenha1(e.target.value);
 							}}
 						></Css.Input>
-						<Css.Entrar type="submit"> Sign Up </Css.Entrar>
+						<Css.Entrar type="submit"> Cadastrar </Css.Entrar>
 
 						<Css.BoxConfirmation>
 							<Css.Confirmation>
@@ -96,9 +96,8 @@ export default function Cadastro() {
 						<Link to="/" style={{ paddingLeft: 13, textDecoration: "none" }}>
 							<p>
 								{" "}
-								If you have an account?
 								<Css.Signup>
-									<b> Sign up here!</b>
+									<p>Já tenho cadastro!</p>
 								</Css.Signup>{" "}
 							</p>
 						</Link>
